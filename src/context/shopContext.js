@@ -20,15 +20,31 @@ class ShopProvider extends Component {
     isMenuOpen: false,
   };
 
-  //keeps products in user cart checkout, save checkout id in local storage
+  // load data from a remote endpoint, instantiate the network request
+  componentDidMount() {
+    //if there is a checkout id already in local storage then fetch it, do not invoke createCheckout function
+    //if there is not then do the function
+    if (localStorage.checkout_id) {
+      this.fetchCheckout(localStorage.checkout_id);
+    } else {
+      this.createCheckout();
+    }
+  }
+
+  //creates a new checkout, keeps products in user cart checkout, save checkout id in local storage
   createCheckout = async () => {
     // Create an empty checkout
     const checkout = await client.checkout.create();
-    localStorage.setItem("checkout-id", checkout.id);
+    localStorage.setItem("checkout_id", checkout.id);
     this.setState({ checkout: checkout });
   };
 
-  fetchCheckout = async () => {};
+  //fetches existing user checkout by the checkout id
+  fetchCheckout = async (checkoutId) => {
+    client.checkout.fetch(checkoutId).then((checkout) => {
+      this.setState({ checkout: checkout });
+    });
+  };
 
   addItemtoCheckout = async () => {};
 
