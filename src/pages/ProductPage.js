@@ -12,7 +12,7 @@ export const ProductPage = () => {
     fetchProductWithHandle(handle);
   }, [fetchProductWithHandle, handle]);
 
-  if (!product.title) return <div>Loading.....</div>;
+  if (!product.title) return <div>Loading....</div>;
 
   return (
     <div>

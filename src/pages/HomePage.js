@@ -16,7 +16,7 @@ export const HomePage = () => {
   return (
     <div>
       {products.map((product) => (
-        <Link to={`/product/${product.handle}`} key={product.title}>
+        <Link to={`/products/${product.handle}`} key={product.title}>
           {product.title}
         </Link>
       ))}
