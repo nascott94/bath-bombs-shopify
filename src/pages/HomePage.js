@@ -13,7 +13,7 @@ export const HomePage = () => {
     fetchAllProducts();
   }, [fetchAllProducts]);
 
-  console.log(products);
+  // console.log(products);
 
   //no products then return loading
   if (!products) return <div>Loading....</div>;
