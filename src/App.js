@@ -4,6 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { ProductPage } from "./pages/ProductPage";
 import { NavBar } from "./components/NavBar";
 import { Cart } from "./components/Cart";
+import { NavMenu } from "./components/NavMenu";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <NavBar />
         <Cart />
+        <NavMenu />
         <Switch>
           <Route path="/products/:handle">
             <ProductPage />

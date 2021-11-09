@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { ShopContext } from "../context/shopContext";
-import { Link } from "react-router-dom";
+
 import {
   Drawer,
   DrawerBody,
@@ -10,9 +9,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Text,
-  Link,
-  Box,
+  VStack,
 } from "@chakra-ui/react";
+
+import { ShopContext } from "../context/shopContext";
+import { Link } from "react-router-dom";
 
 export const NavMenu = () => {
   const { isMenuOpen, closeMenu } = useContext(ShopContext);
