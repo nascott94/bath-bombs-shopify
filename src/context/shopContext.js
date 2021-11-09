@@ -46,9 +46,36 @@ class ShopProvider extends Component {
     });
   };
 
-  addItemtoCheckout = async () => {};
+  //adds new item to checkout based on variantid and quantity
+  //shopify creates product variantid automatically
+  addItemToCheckout = async (variantId, quantity) => {
+    const lineItemsToAdd = [
+      {
+        variantId: variantId,
+        // parses a string argument and returns an intege
+        quantity: parseInt(quantity, 10),
+      },
+    ];
+    //adds to checkout
+    const checkout = await client.checkout.addLineItems(
+      this.state.checkout.id,
+      lineItemsToAdd
+    );
+    this.setState({ checkout: checkout });
 
-  removeLineItem = async (lineItemIdsToRemove) => {};
+    //open cart when new line item is added
+    this.openCart();
+  };
+
+  //removes a item from the cart
+  removeLineItem = async (lineItemIdsToRemove) => {
+    // Remove an item from the checkout
+    const checkout = await client.checkout.removeLineItems(
+      this.state.checkout.id,
+      lineItemIdsToRemove
+    );
+    this.setState({ checkout: checkout });
+  };
 
   fetchAllProducts = async () => {
     // Fetch all products in your shop
@@ -64,9 +91,13 @@ class ShopProvider extends Component {
     this.setState({ product: product });
   };
 
-  closeCart = () => {};
+  closeCart = () => {
+    this.setState({ isCartOpen: false });
+  };
 
-  openCart = () => {};
+  openCart = () => {
+    this.setState({ isCartOpen: true });
+  };
 
   closeMenu = () => {};
 
@@ -79,7 +110,7 @@ class ShopProvider extends Component {
           ...this.state,
           fetchAllProducts: this.fetchAllProducts,
           fetchProductWithHandle: this.fetchProductWithHandle,
-          addItemtoCheckout: this.addItemtoCheckout,
+          addItemToCheckout: this.addItemToCheckout,
           removeLineItem: this.removeLineItem,
           closeCart: this.closeCart,
           openCart: this.openCart,

@@ -19,7 +19,14 @@ export const NavBar = () => {
         w={100}
         h={100}
       />
-      <Icon fill="white" cursor="pointer" as={MdShoppingCart} w={30} h={30}>
+      <Icon
+        fill="white"
+        cursor="pointer"
+        as={MdShoppingCart}
+        w={30}
+        h={30}
+        onClick={() => openCart()}
+      >
         Cart
       </Icon>
     </Flex>
