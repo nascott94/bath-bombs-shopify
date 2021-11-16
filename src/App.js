@@ -10,7 +10,7 @@ import { Footer } from "./components/Footer";
 function App() {
   return (
     <div>
-      <Router>
+      <Router className="App">
         <NavBar />
         <Cart />
         <NavMenu />
