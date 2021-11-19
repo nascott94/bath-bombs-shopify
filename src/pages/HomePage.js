@@ -19,7 +19,7 @@ export const HomePage = () => {
   // console.log(products);
 
   //no products then return loading
-  if (!products) return <div>Loading....</div>;
+  if (!products) return <div>Loading Bath Bombs....</div>;
 
   return (
     <Box
@@ -30,7 +30,7 @@ export const HomePage = () => {
       <Hero />
       <RichText
         heading="The relaxation you’ve been waiting for."
-        text="Our Bath bombs guarantee a fun, relaxing, and colorful night."
+        text="Our bath bombs guarantee a fun, relaxing, and colorful night."
       />
       <Grid templateColumns={["repeat(1fr)", "repeat(3, 1fr)"]}>
         {products.map((product) => (
